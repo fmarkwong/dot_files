@@ -1,0 +1,232 @@
+config defaultToCurrentScreen true
+config nudgePercentOf screenSize
+config resizePercentOf screenSize
+config layoutFocusOnActivate true
+
+# Shows app icons and background apps, spreads icons in the same place.
+config windowHintsShowIcons true
+config windowHintsSpread true
+config windowHintsIconAlpha 0.5
+config windowHintsIgnoreHiddenWindows false
+config secondsBetweenRepeat 0.1
+#config windowHintsDuration 5
+
+# Monitor Aliases
+alias monitor0 0
+alias monitor1 1
+alias monitor2 2
+
+#Aliases
+#alias hyper ctrl;shift;alt;cmd
+alias hyper ctrl;alt;cmd
+alias hyper-shift ctrl;shift;alt;cmd
+
+# Window grid
+#bind g:cmd grid padding:5 0:6,2 1:8,3
+bind g:cmd grid padding:5 0:6,2 1:5,2
+
+
+
+# Abstract positions
+alias full          move screenOriginX;screenOriginY                  screenSizeX;screenSizeY
+#alias lefthalf      move screenOriginX;screenOriginY                  screenSizeX/2;screenSizeY
+alias lefthalf      move screenOriginX;windowTopLeftY    screenSizeX/2;windowSizeY
+alias left_two_third      move screenOriginX;screenOriginY                  screenSizeX*5.7/10;screenSizeY
+alias leftthird move screenOriginX;screenOriginY screenSizeX/3;screenSizeY
+#alias rightthird move screenOriginX+screenSizeX/3+screenSizeX/3;screenOriginY screenSizeX/3; screenSizeY
+#alias rightthird move screenOriginX*0.7screenSizeX/3;screenOriginY screenSizeX/3; screenSizeY
+#alias righthalf     move screenOriginX+screenSizeX/2;screenOriginY    screenSizeX/2;screenSizeY
+alias righthalf     move screenOriginX+screenSizeX/2;windowTopLeftY screenSizeX/2;windowSizeY
+alias right_two_third     move screenOriginX+screenSizeX/3;screenOriginY    screenSizeX*2/3;screenSizeY
+alias rightmost     move screenOriginX+screenSizeX*0.4;screenOriginY  screenSizeX*0.6;screenSizeY
+alias rightless     move screenOriginX+screenSizeX*0.6;screenOriginY  screenSizeX*0.4;screenSizeY
+alias leftmost      move screenOriginX;screenOriginY                  screenSizeX*0.6;screenSizeY
+alias leftless      move screenOriginX;screenOriginY                  screenSizeX*0.4;screenSizeY
+alias topleft corner top-left resize:screenSizeX/2;screenSizeY/2
+alias topright corner top-right resize:screenSizeX/2;screenSizeY/2
+alias bottomleft corner bottom-left resize:screenSizeX/2;screenSizeY/2
+alias bottomright corner bottom-right resize:screenSizeX/2;screenSizeY/2
+
+
+alias top_two_third      move screenOriginX;screenOriginY                 screenSizeX;screenSizeY*.66
+alias top_80_percent     move screenOriginX;screenOriginY                 screenSizeX;screenSizeY*.80
+alias bottom_one_third   move screenOriginX;screenOriginY+screenSizeY*.66 screenSizeX;screenSizeY*.33
+alias bottom_20_percent  move screenOriginX;screenOriginY+screenSizeY*.80 screenSizeX;screenSizeY*.20
+alias top_half           move screenOriginX;screenOriginY                 screenSizeX;screenSizeY*.5
+alias bottom_half        move screenOriginX;screenOriginY+screenSizeY*.5  screenSizeX;screenSizeY*.5
+
+
+# Concrete positions
+alias 1-full        move screenOriginX;screenOriginY screenSizeX;screenSizeY         ${monitor0}
+alias full-mon0 move screenOriginX;screenOriginY screenSizeX;screenSizeY         ${monitor0}
+alias full-mon1 move screenOriginX;screenOriginY screenSizeX;screenSizeY         ${monitor1}
+alias 1-left        move screenOriginX;screenOriginY screenSizeX/2;screenSizeY         ${monitor0}
+alias 1-right       move screenOriginX+screenSizeX/2;screenOriginY screenSizeX/2;screenSizeY         ${monitor0}
+alias 2-left        move screenOriginX;screenOriginY screenSizeX/2;screenSizeY         ${monitor1}
+alias 2-right       move screenOriginX+screenSizeX/2;screenOriginY screenSizeX/2;screenSizeY         ${monitor1}
+alias 2-righttop    move screenOriginX+screenSizeX/2;screenOriginY screenSizeX/2;screenSizeY/2       ${monitor1}
+alias 2-rightbottom move screenOriginX+screenSizeX/2;screenOriginY+screenSizeY/2    screenSizeX/2;screenSizeY/2       ${monitor1}
+
+#Stand up layout ( 1 laptop monitor )
+alias iterm1-1mon-layout move screenOriginX+216;screenOriginY+0 1033;425  ${monitor0}
+alias iterm2-1mon-layout move screenOriginX+645;screenOriginY+414 793;406  ${monitor0}
+alias iterm3-1mon-layout ${full-mon0}
+alias macvim-1mon-layout move screenOriginX+89;screenOriginY+0 658;824  ${monitor0}
+alias chrome-1mon-layout ${left_two_third}  {monitor0}
+layout 1monitor 'MacVim' throw ${monitor0}
+layout 1monitor 'Google Chrome' throw ${monitor0}
+layout 1monitor 'Slack' throw ${monitor0}
+layout 1monitor 'Simplenote' throw ${monitor0}
+layout 1monitor 'Reminders' throw ${monitor0}
+layout 1monitor 'Finder' throw ${monitor0}
+layout 1monitor 'VMware Fusion' throw ${monitor0}
+layout 1monitor 'Preview' throw ${monitor0}
+layout 1monitor 'Mail' throw ${monitor0}
+layout 1monitor 'iTerm':SORT_TITLE,MAIN_FIRST ${bottom_half} ${monitor0} | ${full} ${monitor0}
+#layout 1monitor 'MacVim' ${macvim-1mon-layout}
+#layout 1monitor 'Google Chrome' ${chrome-1mon-layout}
+  
+#Sitdown layout ( 2 monitors )
+#alias iterm1-3mon-layout move screenOriginX+0;screenOriginY+0 1169;447  ${monitor2}
+#alias iterm2-3mon-layout move screenOriginX+24;screenOriginY+448 1017;447  ${monitor2}
+#alias iterm3-3mon-layout ${full-mon1}
+#alias macvim-3mon-layout move screenOriginX+433;screenOriginY+14 786;875  ${monitor2}
+#alias chrome-3mon-layout move screenOriginX+265;screenOriginY+11 824;853  ${monitor2}
+layout 3monitor 'MacVim' throw ${monitor1}
+layout 3monitor 'Google Chrome' throw ${monitor1}
+layout 3monitor 'Slack' throw ${monitor1}
+layout 3monitor 'Simplenote' throw ${monitor1}
+layout 3monitor 'Reminders' throw ${monitor1}
+layout 3monitor 'Finder' throw ${monitor1}
+layout 3monitor 'VMware Fusion' throw ${monitor1}
+layout 3monitor 'Preview' throw ${monitor1}
+layout 3monitor 'Mail' throw ${monitor1}
+layout 3monitor 'iTerm':SORT_TITLE,MAIN_LAST ${bottom_half} ${monitor1} | ${full} ${monitor1}
+
+
+#terminal layout
+layout terminal-layout-thirds 'iTerm':SORT_TITLE ${top_two_third} | ${bottom_one_third}
+layout terminal-layout-80_20 'iTerm':SORT_TITLE ${top_80_percent} | ${bottom_20_percent}
+layout terminal-layout-half 'iTerm':SORT_TITLE ${top_half} | ${bottom_half}
+layout vim-terminal-full 'iTerm':SORT_TITLE ${full}
+layout terminal-full 'iTerm':TITLE_ORDER_REGEX=^2 ${full}
+
+bind 1:${hyper} layout 1monitor
+bind 2:${hyper} layout 3monitor
+
+bind i:${hyper} chain layout terminal-layout-80_20 | layout vim-terminal-full
+bind i:${hyper-shift} chain layout terminal-layout-half | layout vim-terminal-full
+
+# Default Layouts
+#default 2monitors resolutions:${monitor0};${monitor1};
+#default 1monitor  resolutions:${monitor0}
+
+# 2 Monitor layout
+#layout 2monitors 'iTerm':MAIN_FIRST                       ${2-rightbottom} | ${1-left}
+#layout 2monitors 'Safari':REPEAT                          ${1-full}
+#layout 2monitors 'Nightly':REPEAT                          ${1-full}
+#layout 2monitors 'Sublime Text 2':REPEAT              ${1-full}
+#layout 2monitors 'MacVim':REPEAT              		  ${1-full}
+#layout 2monitors 'Mail':MAIN_FIRST                        ${2-left}
+#layout 2monitors 'Path Finder':MAIN_FIRST                 ${2-righttop}
+#layout 2monitors 'Xcode':REPEAT                           ${1-full}
+#layout 2monitors 'Eclipse':REPEAT                         ${1-full}
+#layout 2monitors 'iTunes':REPEAT                          ${1-full}
+ 
+# 1 Monitor layout
+#layout 1monitor 'iTerm':MAIN_FIRST                       ${1-right}
+#layout 1monitor 'Sublime Text 2':MAIN_FIRST              ${1-left}
+#layout 1monitor 'MacVim':MAIN_FIRST              		 ${1-left}
+#layout 1monitor 'Safari':REPEAT                          ${1-full}
+#layout 1monitor 'Nightly':REPEAT                          ${1-full}
+#layout 1monitor 'Mail':MAIN_FIRST                        ${1-full}
+#layout 1monitor 'Path Finder':MAIN_FIRST                 ${1-full}
+#layout 1monitor 'Xcode':REPEAT                           ${1-full}
+#layout 1monitor 'Eclipse':REPEAT                         ${1-full}
+#layout 1monitor 'iTunes':REPEAT                          ${1-full}
+#layout 1monitor 'gvim' ${1-left}
+#layout 1monitor 'iTerm' ${1-right}
+ 
+
+
+# Resize Bindings
+bind right:alt       resize +5% +0
+bind left:alt        resize -5% +0
+bind up:alt          resize +0   -5%
+bind down:alt        resize +0   +5%
+bind right:ctrl;alt  resize -5% +0 bottom-right
+bind left:ctrl;alt   resize +5% +0 bottom-right
+bind up:ctrl;alt     resize +0   +5% bottom-right
+bind down:ctrl;alt   resize +0   -5% bottom-right
+
+# Push Bindings
+bind right:ctrl;cmd  push right bar-resize:screenSizeX/3
+bind left:ctrl;cmd   push left  bar-resize:screenSizeX/3
+bind up:ctrl;cmd     push up    bar-resize:screenSizeY/2
+bind down:ctrl;cmd   push down  bar-resize:screenSizeY/2
+
+# Nudge Bindings
+bind right:shift;alt nudge +5% +0
+bind left:shift;alt  nudge -5% +0
+bind up:shift;alt    nudge +0   -5%
+bind down:shift;alt  nudge +0   +5%
+
+# Throw Bindings
+bind 1:ctrl;alt         throw 0 resize
+bind 2:ctrl;alt         throw 1 resize
+bind 3:ctrl;alt         throw 2 resize
+bind right:ctrl;alt;cmd throw right resize
+bind left:ctrl;alt;cmd  throw left  resize
+bind up:ctrl;alt;cmd    throw up    resize
+bind down:ctrl;alt;cmd  throw down  resize
+
+# Focus Bindings
+bind right:cmd    focus right
+bind left:cmd     focus left
+bind up:cmd       focus up
+bind down:cmd     focus down
+bind up:${hyper}   focus behind
+bind down:${hyper} focus behind
+
+# Location bindings
+bind [:${hyper} ${lefthalf}
+bind ]:${hyper} ${righthalf}
+bind ':${hyper} ${full}
+bind 9:${hyper} ${left_two_third}
+bind 0:${hyper} ${right_two_third}
+bind [:${hyper-shift} ${top_half}
+bind ]:${hyper-shift} ${bottom_half}
+
+#bind 3:${hyper} ${leftthird}
+#bind 4:${hyper} ${rightthird}
+#bind r:${hyper} throw next
+ 
+# Resize Bindings
+#bind r:${hyper} ${leftmost}
+#bind g:${hyper} ${rightmost}
+
+
+# Throw
+bind -:${hyper} throw last
+bind =:${hyper}  throw next
+
+layout focus-terminal 'iTerm':TITLE_ORDER_REGEX=^2 focus 'iTerm' 
+layout focus-vim-terminal 'iTerm':TITLE_ORDER_REGEX=^1 focus 'iTerm' 
+
+bind b:${hyper} focus 'Google Chrome'
+#bind g:${hyper} focus 'Safari'
+bind g:${hyper} focus 'Firefox'
+bind v:${hyper} layout focus-vim-terminal 
+bind t:${hyper} layout focus-terminal 
+bind m:${hyper} focus 'Mailplane 3'
+bind c:${hyper} focus 'Slack'
+bind e:${hyper} focus 'MacVim'
+bind n:${hyper} focus 'Simplenote'
+bind r:${hyper} focus 'Reminders'
+bind f:${hyper} focus 'Finder'
+bind p:${hyper} focus 'Preview'
+bind s:${hyper} focus 'Skype'
+bind a:${hyper} focus 'Calendar'
+
+# Window Hints
+bind s:${hyper} hint hjkl;yuiopnm'
